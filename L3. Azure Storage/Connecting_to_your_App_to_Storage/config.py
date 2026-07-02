@@ -4,13 +4,27 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'secret-key'
 
-    SQL_SERVER = os.environ.get('SQL_SERVER') or '[SQL_SERVER_GOES_HERE]'
-    SQL_DATABASE = os.environ.get('SQL_DATABASE') or '[SQL_DATABASE_GOES_HERE]'
-    SQL_USER_NAME = os.environ.get('SQL_USER_NAME') or '[SQL_USER_NAME_GOES_HERE]'
-    SQL_PASSWORD = os.environ.get('SQL_PASSWORD') or '[SQL_PASSWORD_GOES_HERE]'
-    SQLALCHEMY_DATABASE_URI = 'mssql+pyodbc://' + SQL_USER_NAME + '@' + SQL_SERVER + ':' + SQL_PASSWORD + '@' + SQL_SERVER + ':1433/' + SQL_DATABASE + '?driver=ODBC+Driver+17+for+SQL+Server'
+    SQL_SERVER = 'moon-sql-server-2026.database.windows.net'
+    SQL_DATABASE = 'database-west'
+    SQL_USER_NAME = 'sqladmin'
+    SQL_PASSWORD = 'Guruji@123'
+
+    SQLALCHEMY_DATABASE_URI = (
+        'mssql+pyodbc://'
+        + SQL_USER_NAME
+        + '@'
+        + SQL_SERVER
+        + ':'
+        + SQL_PASSWORD
+        + '@'
+        + SQL_SERVER
+        + ':1433/'
+        + SQL_DATABASE
+        + '?driver=ODBC+Driver+18+for+SQL+Server'
+    )
+
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    BLOB_ACCOUNT = os.environ.get('BLOB_ACCOUNT') or '[BLOB_ACCOUNT_GOES_HERE]'
-    BLOB_STORAGE_KEY = os.environ.get('BLOB_STORAGE_KEY') or '[BLOB_STORAGE_KEY_GOES_HERE]'
-    BLOB_CONTAINER = os.environ.get('BLOB_CONTAINER') or '[BLOB_CONTAINER_GOES_HERE]'
+    BLOB_ACCOUNT = 'moonstorage2026'
+    BLOB_STORAGE_KEY = 'nbX6Rxcy1d1lI3sk6XuQBOFs3n8iv+U9ontW1vAgJ/Z9ewJkZbrev6KbFVDxnwJscCoKqrXORO3H+AStrGxMng=='
+    BLOB_CONTAINER = 'images'
